@@ -1,0 +1,19 @@
+<div *ngFor="let item of newsFeedStories; let i = index" >
+  <ul *ngIf="userName == item.username || userName == 'All'" (mouseover)="changeDateTimeFormatMouseOver(i)" (mouseout)="changeDateTimeFormatMouseOut(i)">
+    <li>
+      {{ item?.username }}
+    </li>
+    <li>
+      {{ item?.type }}
+    </li>
+    <li *ngIf="!changeDateTimeFormat[i]">
+      {{ item?.date | date:'shortTime' }}
+    </li>
+    <li *ngIf="changeDateTimeFormat[i]">
+      {{ item?.date | date:'medium' }}
+    </li>
+    <li>
+      <button type="button" (click)="favoriteYesNo(i)">Favorite {{ favorite[i] }}</button>
+    </li>
+  </ul>
+</div>
